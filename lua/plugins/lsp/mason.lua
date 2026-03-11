@@ -12,7 +12,6 @@ return {
         "eslint",
         "vtsls",
         "vue_ls",
-        "jdtls",
       },
     },
     dependencies = {
