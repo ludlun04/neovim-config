@@ -9,6 +9,12 @@ vim.o.number = true
 --  Experiment for yourself to see if you like it!
 vim.o.relativenumber = true
 
+-- Indentation: use 2 spaces
+vim.o.tabstop = 2        -- width of a literal tab character
+vim.o.shiftwidth = 2     -- width for autoindent and >> / 
+vim.o.softtabstop = 2    -- width of tab when editing
+vim.o.expandtab = true   -- use spaces instead of tab characters
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
 

@@ -170,6 +170,8 @@ return {
           },
         },
         jdtls = {},
+        jsonls = {},
+        lemminx = {},
         vue_ls = {},
         vtsls = {
           filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },

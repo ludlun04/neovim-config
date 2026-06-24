@@ -70,6 +70,17 @@ vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
 vim.keymap.set('n', '<leader>gc', '<cmd>ConventionalCommit<cr>', { desc = 'Conventional Commit' })
 
+vim.keymap.set('n', '<leader>gs', '<cmd>tab Git<cr>', { desc = 'Git [s]tatus' })
+vim.keymap.set('n', '<leader>gl', '<cmd>Git log<cr>', {desc = 'Git [l]og' })
+vim.keymap.set('n', '<leader>ga', '<cmd>Git add %<cr>', { desc = 'Git [a]dd current file' })
+vim.keymap.set('n', '<leader>gA', '<cmd>Git add .<cr>', { desc = 'Git [A]dd all' })
+vim.keymap.set('n', '<leader>gp', '<cmd>Git pull<cr>', { desc = 'Git [p]ull' })
+vim.keymap.set('n', '<leader>gP', function()
+  if vim.fn.confirm('Push to remote?', '&Yes\n&No', 2) == 1 then
+    vim.cmd 'Git push'
+  end
+end, { desc = 'Git [P]ush' })
+
 vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
   expr = true,
   replace_keycodes = false,
