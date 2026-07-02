@@ -22,7 +22,7 @@ return {
     lazy = false, -- load eagerly; the plugin lazy-inits internally and auto_enable shows it on file open
     keys = { { '<leader>mt', '<cmd>Neominimap Toggle<cr>', desc = '[M]inimap [T]oggle' } },
     init = function()
-      vim.g.neominimap = { auto_enable = true }
+      vim.g.neominimap = { auto_enable = false }
 
       -- Make the current line stand out clearly on the minimap (pink accent band).
       local function set_hl()

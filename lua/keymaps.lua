@@ -21,6 +21,7 @@ vim.diagnostic.config {
   jump = { float = true },
 }
 
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -70,7 +71,11 @@ vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
 vim.keymap.set('n', '<leader>gc', '<cmd>ConventionalCommit<cr>', { desc = 'Conventional Commit' })
 
-vim.keymap.set('n', '<leader>gs', '<cmd>tab Git<cr>', { desc = 'Git [s]tatus' })
+vim.keymap.set('n', '<leader>gs', function()
+  local output = vim.fn.systemlist { 'git', 'status', '--short', '--branch' }
+  local level = vim.v.shell_error ~= 0 and vim.log.levels.ERROR or vim.log.levels.INFO
+  vim.notify(table.concat(output, '\n'), level, { title = 'Git status', timeout = 5000 })
+end, { desc = 'Git [s]tatus' })
 vim.keymap.set('n', '<leader>gl', '<cmd>Git log<cr>', {desc = 'Git [l]og' })
 vim.keymap.set('n', '<leader>ga', '<cmd>Git add %<cr>', { desc = 'Git [a]dd current file' })
 vim.keymap.set('n', '<leader>gA', '<cmd>Git add .<cr>', { desc = 'Git [A]dd all' })
